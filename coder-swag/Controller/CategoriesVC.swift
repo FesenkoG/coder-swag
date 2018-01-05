@@ -19,6 +19,8 @@ class CategoriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         categoryTable.dataSource = self
         categoryTable.delegate = self
         
+        categoryTable.rowHeight = 130.0
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +31,6 @@ class CategoriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as? CategoryCell {
             let category = DataService.instance.getCategories()[indexPath.row]
             cell.updateViews(category: category)
-            
             return cell
         } else {
             return CategoryCell()
